@@ -40,6 +40,11 @@ app.Use(async (context, next) =>
 //    await context.Response.WriteAsync("Hello from 2nd delegate.");
 //});
 
+if (!Directory.Exists("Data"))
+{
+    Directory.CreateDirectory("Data");
+}
+
 // recreate & migrate the database on each run, for demo purposes
 using (var serviceScope = app.Services.GetService<IServiceScopeFactory>().CreateScope())
 {

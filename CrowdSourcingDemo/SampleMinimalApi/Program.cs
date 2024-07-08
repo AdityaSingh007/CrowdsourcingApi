@@ -39,6 +39,10 @@ app.UseHttpsRedirection();
 app.RegisterEmployeeEndpoints();
 app.RegisterMessageQueueEndpoints();
 
+if (!Directory.Exists("Data"))
+{
+    Directory.CreateDirectory("Data");
+}
 // recreate & migrate the database on each run, for demo purposes
 using (var serviceScope = app.Services.GetService<IServiceScopeFactory>().CreateScope())
 {
